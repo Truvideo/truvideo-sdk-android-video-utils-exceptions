@@ -1,3 +1,10 @@
+jdk:
+  - openjdk17
+
 install:
-  - FILE="-Dfile=smart-exception-java-0.2.1.jar"
-  - mvn install:install-file $FILE -DgroupId=com.truvideo.sdk.video.utils.exception -DartifactId=smart-exception-java -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true
+  - mkdir -p build-temp
+  - unzip smart-exception-java-0.2.1.jar -d build-temp
+  - unzip smart-exception-common-0.2.1.jar -d build-temp
+  - jar cf smart-exception-0.2.1.jar -C build-temp .
+  - FILE="-Dfile=smart-exception-0.2.1.jar"
+  - mvn install:install-file $FILE -DgroupId=com.truvideo.sdk.video.utils.exception -DartifactId=smart-exception -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true
